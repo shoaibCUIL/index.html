@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Python Notes for Absolute Beginners</title>
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --dark: #1a1a2e;
+            --light: #f4f4f4;
+            --code-bg: #2d2d2d;
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a1a2e 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        nav li {
+            margin: 0.3rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            background-color: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #f8f8f2;
+            padding: 1.2rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 5px solid var(--secondary);
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Inline Code */
+        p code, li code {
+            background-color: #f0f0f0;
+            color: var(--primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Output Box */
+        .output {
+            background-color: #e8f4f8;
+            border-left: 5px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        .output-label {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tip Box */
+        .tip {
+            background-color: #fffbeb;
+            border-left: 5px solid var(--secondary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        .tip-title {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Note Box */
+        .note {
+            background-color: #e7f3ff;
+            border-left: 5px solid #2196F3;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        /* Warning Box */
+        .warning {
+            background-color: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Exercise Box */
+        .exercise {
+            background-color: #f3e5f5;
+            border-left: 5px solid #9c27b0;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        .exercise-title {
+            color: #6a1b9a;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.7rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🐍 Complete Python Notes for Absolute Beginners</h1>
+        <p>Learn Python step by step with simple explanations, examples, and practice exercises</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#basics">Basics</a></li>
+            <li><a href="#datatypes">Data Types</a></li>
+            <li><a href="#operators">Operators</a></li>
+            <li><a href="#comments">Comments</a></li>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#io">Input/Output</a></li>
+            <li><a href="#strings">Strings</a></li>
+            <li><a href="#if">If</a></li>
+            <li><a href="#ifelse">If-Else</a></li>
+            <li><a href="#elif">Elif</a></li>
+            <li><a href="#nested">Nested If</a></li>
+            <li><a href="#lists">Lists</a></li>
+            <li><a href="#indexing">Indexing</a></li>
+            <li><a href="#slicing">Slicing</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#mistakes">Mistakes</a></li>
+            <li><a href="#practice">Practice</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- Introduction to Python -->
+        <section id="intro">
+            <h2>1. Introduction to Python</h2>
+
+            <h3>What is Python?</h3>
+            <p>Python is a <strong>programming language</strong> created by Guido van Rossum in 1991. A programming language is a way humans give instructions to computers so that computers can perform tasks for us.</p>
+
+            <p>Think of Python like English for computers. Just like you use English to talk to your friends, you use Python to talk to your computer.</p>
+
+            <h3>Why Should You Learn Python?</h3>
+            <ul>
+                <li><strong>Easy to Read:</strong> Python code looks almost like normal English.</li>
+                <li><strong>Easy to Write:</strong> You need fewer lines of code compared to many other languages.</li>
+                <li><strong>Very Popular:</strong> Used by companies like Google, Instagram, Netflix, and Spotify.</li>
+                <li><strong>Many Uses:</strong> You can use Python for websites, games, data science, artificial intelligence, automation, and more.</li>
+                <li><strong>Large Community:</strong> If you get stuck, millions of people online can help you.</li>
+            </ul>
+
+            <h3>How Does Python Work?</h3>
+            <p>When you write Python code, you save it in a file with a <code>.py</code> extension, like <code>my_program.py</code>. Then the Python software reads your file and runs it line by line.</p>
+
+            <p>You can run Python in two main ways:</p>
+            <ul>
+                <li><strong>Python File:</strong> Write code in a file and run the whole file.</li>
+                <li><strong>Interactive Mode:</strong> Type commands one at a time and see immediate results.</li>
+            </ul>
+
+            <h3>What is a Program?</h3>
+            <p>A program is simply a list of instructions that tells the computer what to do. For example:</p>
+            <ul>
+                <li>Show a welcome message</li>
+                <li>Ask the user for their name</li>
+                <li>Add two numbers</li>
+                <li>Check if someone passed an exam</li>
+            </ul>
+
+            <div class="note">
+                <strong>Note:</strong> Python is an <strong>interpreted language</strong>, which means Python reads and executes your code one line at a time. If it finds an error, it stops and tells you what went wrong.
+            </div>
+        </section>
+
+        <!-- Python Basics -->
+        <section id="basics">
+            <h2>2. Python Basics</h2>
+            
+            <p>Every Python program is made up of simple building blocks. Let's learn the most basic ones first.</p>
+
+            <h3>The print() Function</h3>
+            <p>The <code>print()</code> function is used to show output on the screen. It is the easiest way to make your program communicate with you.</p>
+
+            <pre><code>print("Hello, World!")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Hello, World!
+            </div>
+
+            <h3>Multiple print() Statements</h3>
+            <p>You can use <code>print()</code> many times. Each <code>print()</code> usually shows output on a new line.</p>
+
+            <pre><code>print("My name is Alice.")
+print("I am learning Python.")
+print("This is my first program.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                My name is Alice.<br>
+                I am learning Python.<br>
+                This is my first program.
+            </div>
+
+            <h3>Printing Multiple Things Together</h3>
+            <p>You can print multiple items at once by separating them with commas.</p>
+
+            <pre><code>print("My name is", "Alice")
+print("I am", 20, "years old.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                My name is Alice<br>
+                I am 20 years old.
+            </div>
+
+            <h3>Important Rules of Python</h3>
+            <ul>
+                <li>Python reads code from <strong>top to bottom</strong>, line by line.</li>
+                <li>Python is <strong>case-sensitive</strong>. <code>Print</code> and <code>print</code> are different things.</li>
+                <li>Text inside quotation marks is called a <strong>string</strong>. You can use single quotes <code>' '</code> or double quotes <code>" "</code>.</li>
+                <li>Mismatched quotes will cause an error.</li>
+            </ul>
+
+            <pre><code>print('This works with single quotes')
+print("This works with double quotes")
+# print('This will not work")  # Error: mixed quotes!</code></pre>
+
+            <div class="tip">
+                <div class="tip-title">💡 Pro Tip:</div>
+                Use double quotes <code>" "</code> for strings most of the time. This helps avoid confusion when your text contains apostrophes like <code>"It's easy"</code>.
+            </div>
+        </section>
+
+        <!-- Data Types -->
+        <section id="datatypes">
+            <h2>3. Data Types in Python</h2>
+
+            <p>A <strong>data type</strong> tells the computer what kind of value something is. Different types of data are used for different purposes.</p>
+
+            <h3>Main Data Types in Python</h3>
+            <table>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>str</code></td>
+                    <td>String</td>
+                    <td>Text</td>
+                    <td><code>"Hello"</code></td>
+                </tr>
+                <tr>
+                    <td><code>int</code></td>
+                    <td>Integer</td>
+                    <td>Whole number (no decimal)</td>
+                    <td><code>25</code>, <code>-7</code></td>
+                </tr>
+                <tr>
+                    <td><code>float</code></td>
+                    <td>Float</td>
+                    <td>Decimal number</td>
+                    <td><code>3.14</code>, <code>-2.5</code></td>
+                </tr>
+                <tr>
+                    <td><code>bool</code></td>
+                    <td>Boolean</td>
+                    <td>True or False</td>
+                    <td><code>True</code>, <code>False</code></td>
+                </tr>
+                <tr>
+                    <td><code>list</code></td>
+                    <td>List</td>
+                    <td>Collection of items</td>
+                    <td><code>[1, 2, 3]</code></td>
+                </tr>
+            </table>
+
+            <h3>Finding the Type of a Value</h3>
+            <p>You can use the <code>type()</code> function to check what data type something is.</p>
+
+            <pre><code>print(type("Hello"))
+print(type(25))
+print(type(3.14))
+print(type(True))</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                &lt;class 'str'&gt;<br>
+                &lt;class 'int'&gt;<br>
+                &lt;class 'float'&gt;<br>
+                &lt;class 'bool'&gt;
+            </div>
+
+            <h3>Type Conversion</h3>
+            <p>Sometimes you need to change one data type into another. This is called <strong>type conversion</strong> or <strong>type casting</strong>.</p>
+
+            <pre><code># Converting string to integer
+num_str = "10"
+num_int = int(num_str)
+print(num_int + 5)  # Now we can do math
+
+# Converting integer to string
+num = 100
+text = str(num)
+print("The number is " + text)
+
+# Converting integer to float
+whole = 5
+decimal = float(whole)
+print(decimal)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                15<br>
+                The number is 100<br>
+                5.0
+            </div>
+
+            <h3>Common Conversion Functions</h3>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Converts To</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>int()</code></td>
+                    <td>Integer</td>
+                    <td><code>int("10")</code> gives <code>10</code></td>
+                </tr>
+                <tr>
+                    <td><code>float()</code></td>
+                    <td>Float</td>
+                    <td><code>float("3.14")</code> gives <code>3.14</code></td>
+                </tr>
+                <tr>
+                    <td><code>str()</code></td>
+                    <td>String</td>
+                    <td><code>str(25)</code> gives <code>"25"</code></td>
+                </tr>
+                <tr>
+                    <td><code>bool()</code></td>
+                    <td>Boolean</td>
+                    <td><code>bool(1)</code> gives <code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>list()</code></td>
+                    <td>List</td>
+                    <td><code>list("abc")</code> gives <code>['a','b','c']</code></td>
+                </tr>
+            </table>
+
+            <div class="warning">
+                <strong>⚠️ Be Careful:</strong> You cannot convert every value to every type. For example, <code>int("hello")</code> will give an error because "hello" is not a number.
+            </div>
+        </section>
+
+        <!-- Operators -->
+        <section id="operators">
+            <h2>4. Operators in Python</h2>
+
+            <p><strong>Operators</strong> are special symbols that perform operations on values or variables. They are like the action words of programming.</p>
+
+            <h3>1. Arithmetic Operators</h3>
+            <p>Used to do math.</p>
+
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Name</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td><code>+</code></td>
+                    <td>Addition</td>
+                    <td><code>5 + 3</code></td>
+                    <td><code>8</code></td>
+                </tr>
+                <tr>
+                    <td><code>-</code></td>
+                    <td>Subtraction</td>
+                    <td><code>5 - 3</code></td>
+                    <td><code>2</code></td>
+                </tr>
+                <tr>
+                    <td><code>*</code></td>
+                    <td>Multiplication</td>
+                    <td><code>5 * 3</code></td>
+                    <td><code>15</code></td>
+                </tr>
+                <tr>
+                    <td><code>/</code></td>
+                    <td>Division</td>
+                    <td><code>5 / 2</code></td>
+                    <td><code>2.5</code></td>
+                </tr>
+                <tr>
+                    <td><code>//</code></td>
+                    <td>Floor Division</td>
+                    <td><code>5 // 2</code></td>
+                    <td><code>2</code></td>
+                </tr>
+                <tr>
+                    <td><code>%</code></td>
+                    <td>Modulo (Remainder)</td>
+                    <td><code>5 % 2</code></td>
+                    <td><code>1</code></td>
+                </tr>
+                <tr>
+                    <td><code>**</code></td>
+                    <td>Exponent (Power)</td>
+                    <td><code>2 ** 3</code></td>
+                    <td><code>8</code></td>
+                </tr>
+            </table>
+
+            <pre><code>a = 17
+b = 5
+
+print(a + b)   # 22
+print(a - b)   # 12
+print(a * b)   # 85
+print(a / b)   # 3.4
+print(a // b)  # 3
+print(a % b)   # 2
+print(a ** b)  # 1419857</code></pre>
+
+            <h3>2. Comparison Operators</h3>
+            <p>Used to compare two values. The result is always <code>True</code> or <code>False</code>.</p>
+
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td><code>==</code></td>
+                    <td>Equal to</td>
+                    <td><code>5 == 5</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>!=</code></td>
+                    <td>Not equal to</td>
+                    <td><code>5 != 3</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>&gt;</code></td>
+                    <td>Greater than</td>
+                    <td><code>7 &gt; 4</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;</code></td>
+                    <td>Less than</td>
+                    <td><code>3 &lt; 8</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>&gt;=</code></td>
+                    <td>Greater than or equal to</td>
+                    <td><code>5 &gt;= 5</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;=</code></td>
+                    <td>Less than or equal to</td>
+                    <td><code>4 &lt;= 6</code></td>
+                    <td><code>True</code></td>
+                </tr>
+            </table>
+
+            <h3>3. Assignment Operators</h3>
+            <p>Used to assign values to variables.</p>
+
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>Same As</th>
+                </tr>
+                <tr>
+                    <td><code>=</code></td>
+                    <td>Assign</td>
+                    <td><code>x = 5</code></td>
+                    <td>x is now 5</td>
+                </tr>
+                <tr>
+                    <td><code>+=</code></td>
+                    <td>Add and assign</td>
+                    <td><code>x += 3</code></td>
+                    <td><code>x = x + 3</code></td>
+                </tr>
+                <tr>
+                    <td><code>-=</code></td>
+                    <td>Subtract and assign</td>
+                    <td><code>x -= 3</code></td>
+                    <td><code>x = x - 3</code></td>
+                </tr>
+                <tr>
+                    <td><code>*=</code></td>
+                    <td>Multiply and assign</td>
+                    <td><code>x *= 3</code></td>
+                    <td><code>x = x * 3</code></td>
+                </tr>
+                <tr>
+                    <td><code>/=</code></td>
+                    <td>Divide and assign</td>
+                    <td><code>x /= 3</code></td>
+                    <td><code>x = x / 3</code></td>
+                </tr>
+            </table>
+
+            <h3>4. Logical Operators</h3>
+            <p>Used to combine multiple conditions.</p>
+
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>and</code></td>
+                    <td>Both conditions must be true</td>
+                    <td><code>x &gt; 5 and x &lt; 10</code></td>
+                </tr>
+                <tr>
+                    <td><code>or</code></td>
+                    <td>At least one condition must be true</td>
+                    <td><code>x &lt; 5 or x &gt; 10</code></td>
+                </tr>
+                <tr>
+                    <td><code>not</code></td>
+                    <td>Reverse the result</td>
+                    <td><code>not(x &gt; 5)</code></td>
+                </tr>
+            </table>
+
+            <pre><code>age = 25
+has_id = True
+
+if age >= 18 and has_id:
+    print("You can enter.")
+
+if age < 13 or age > 60:
+    print("You get a discount.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You can enter.
+            </div>
+
+            <div class="note">
+                <strong>Important:</strong> Use <code>=</code> to assign a value to a variable. Use <code>==</code> to compare two values. These look similar but do very different things!
+            </div>
+        </section>
+
+        <!-- Comments -->
+        <section id="comments">
+            <h2>5. Comments in Python</h2>
+
+            <p><strong>Comments</strong> are notes you write inside your code for humans to read. Python ignores comments completely. They are not executed.</p>
+
+            <h3>Why Use Comments?</h3>
+            <ul>
+                <li>To explain what your code does.</li>
+                <li>To help yourself remember later.</li>
+                <li>To help other people understand your code.</li>
+                <li>To temporarily disable a line of code while testing.</li>
+            </ul>
+
+            <h3>Single-Line Comments</h3>
+            <p>Use the hash symbol <code>#</code> to write a single-line comment.</p>
+
+            <pre><code># This is a comment
+print("Hello!")  # This prints a message
+
+# print("This line will not run because it is commented out")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Hello!
+            </div>
+
+            <h3>Multi-Line Comments</h3>
+            <p>Python does not have a special multi-line comment syntax, but you can use:</p>
+            <ul>
+                <li>Multiple <code>#</code> symbols.</li>
+                <li>A multi-line string (triple quotes) that is not assigned to a variable. Python will ignore it.</li>
+            </ul>
+
+            <pre><code>'''
+This is a multi-line comment.
+You can write as many lines as you want here.
+Python will ignore all of this.
+'''
+
+print("Only this line runs.")</code></pre>
+
+            <div class="tip">
+                <div class="tip-title">💡 Best Practice:</div>
+                Write comments that explain <em>why</em> you did something, not just <em>what</em> the code does. Good comments make your code much easier to understand.
+            </div>
+        </section>
+
+        <!-- Variables -->
+        <section id="variables">
+            <h2>6. Variables</h2>
+            
+            <p>A <strong>variable</strong> is like a labeled container where you can store information. Imagine a box with a name tag on it. You can put something inside, look at it later, or replace it with something else.</p>
+
+            <h3>Creating (Declaring) a Variable</h3>
+            <p>In Python, creating a variable is very easy. You write a name, put an equal sign <code>=</code>, and then write the value.</p>
+
+            <pre><code>name = "Alice"
+age = 20
+height = 5.4
+is_student = True</code></pre>
+
+            <p>In the above example:</p>
+            <ul>
+                <li><code>name</code> stores the string <code>"Alice"</code></li>
+                <li><code>age</code> stores the integer <code>20</code></li>
+                <li><code>height</code> stores the float <code>5.4</code></li>
+                <li><code>is_student</code> stores the boolean <code>True</code></li>
+            </ul>
+
+            <h3>Using Variables</h3>
+            <p>After storing a value, you can use the variable name anywhere in your code.</p>
+
+            <pre><code>name = "Alice"
+age = 20
+
+print(name)
+print(age)
+print(name, "is", age, "years old.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Alice<br>
+                20<br>
+                Alice is 20 years old.
+            </div>
+
+            <h3>Changing Variable Values</h3>
+            <p>You can change the value stored in a variable anytime.</p>
+
+            <pre><code>score = 50
+print(score)
+
+score = 75
+print(score)
+
+score = score + 10
+print(score)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                50<br>
+                75<br>
+                85
+            </div>
+
+            <h3>Multiple Assignment</h3>
+            <p>You can assign values to multiple variables in one line.</p>
+
+            <pre><code>a, b, c = 10, 20, 30
+
+print(a)
+print(b)
+print(c)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                10<br>
+                20<br>
+                30
+            </div>
+
+            <h3>Rules for Naming Variables</h3>
+            <ul>
+                <li>Names can contain letters, numbers, and underscores <code>_</code></li>
+                <li>Names <strong>cannot</strong> start with a number.</li>
+                <li>Names are case-sensitive: <code>age</code>, <code>Age</code>, and <code>AGE</code> are different variables.</li>
+                <li>Names cannot contain spaces. Use underscores: <code>my_name</code>.</li>
+                <li>Do not use Python's reserved words like <code>if</code>, <code>else</code>, <code>print</code>, <code>class</code>, <code>def</code>, <code>True</code>, <code>False</code>, etc.</li>
+            </ul>
+
+            <pre><code># Good variable names
+student_name = "Bob"
+total_marks = 95
+_is_ready = True
+
+# Bad variable names (will give errors)
+2nd_name = "Sam"    # Cannot start with a number
+my name = "Tom"     # Cannot have spaces
+my-name = "Jerry"   # Cannot use hyphens</code></pre>
+
+            <h3>Good vs Bad Variable Names</h3>
+            <table>
+                <tr>
+                    <th>Good Names</th>
+                    <th>Bad Names</th>
+                    <th>Why?</th>
+                </tr>
+                <tr>
+                    <td><code>user_name</code></td>
+                    <td><code>x</code></td>
+                    <td>"x" doesn't describe the data</td>
+                </tr>
+                <tr>
+                    <td><code>total_price</code></td>
+                    <td><code>tp</code></td>
+                    <td>Short names are hard to understand</td>
+                </tr>
+                <tr>
+                    <td><code>is_logged_in</code></td>
+                    <td><code>log</code></td>
+                    <td>Unclear meaning</td>
+                </tr>
+                <tr>
+                    <td><code>number_of_students</code></td>
+                    <td><code>n</code></td>
+                    <td>Not descriptive</td>
+                </tr>
+            </table>
+
+            <div class="tip">
+                <div class="tip-title">💡 Naming Tip:</div>
+                Use descriptive names. Instead of <code>a</code>, use <code>student_name</code>. Good names make your code easier to read and fix later.
+            </div>
+        </section>
+
+        <!-- Input and Output -->
+        <section id="io">
+            <h2>7. Input and Output</h2>
+
+            <h3>Output with print()</h3>
+            <p>The <code>print()</code> function shows output on the screen. You can print text, numbers, variables, or multiple things together.</p>
+
+            <pre><code>print("Hello!")
+print(100)
+print("My name is", "Alice")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Hello!<br>
+                100<br>
+                My name is Alice
+            </div>
+
+            <h3>Customizing print()</h3>
+            <p>You can change how <code>print()</code> separates items and what it puts at the end.</p>
+
+            <pre><code>print("Hello", "World", sep="-")   # Separate with hyphen
+print("Loading", end="")           # Don't go to new line
+print("...", end="")
+print("Done!")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Hello-World<br>
+                Loading...Done!
+            </div>
+
+            <h3>Input with input()</h3>
+            <p>The <code>input()</code> function pauses the program and waits for the user to type something and press Enter. Whatever the user types is stored as text.</p>
+
+            <pre><code>name = input("Enter your name: ")
+print("Hello,", name)</code></pre>
+
+            <div class="output">
+                <div class="output-label">When you run this:</div>
+                Enter your name: Alice<br>
+                Hello, Alice
+            </div>
+
+            <h3>input() Always Returns a String</h3>
+            <p>Even if the user types a number, <code>input()</code> stores it as a string. If you want to do math, you must convert it.</p>
+
+            <pre><code>age = input("Enter your age: ")
+print(type(age))</code></pre>
+
+            <div class="output">
+                <div class="output-label">If user enters 20:</div>
+                &lt;class 'str'&gt;
+            </div>
+
+            <h3>Converting Input to Numbers</h3>
+            <p>Wrap the <code>input()</code> function inside <code>int()</code> or <code>float()</code> to convert the user's input.</p>
+
+            <pre><code>age = int(input("Enter your age: "))
+print("Next year, you will be", age + 1)
+
+height = float(input("Enter your height in feet: "))
+print("Your height is", height)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Example output:</div>
+                Enter your age: 20<br>
+                Next year, you will be 21<br>
+                Enter your height in feet: 5.6<br>
+                Your height is 5.6
+            </div>
+
+            <h3>A Complete Input/Output Example</h3>
+            <pre><code>name = input("What is your name? ")
+birth_year = int(input("What year were you born? "))
+current_year = 2025
+age = current_year - birth_year
+
+print("Hello", name + "!")
+print("You are approximately", age, "years old.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Example output:</div>
+                What is your name? Alice<br>
+                What year were you born? 2000<br>
+                Hello Alice!<br>
+                You are approximately 25 years old.
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">💡 Remember:</div>
+                <code>int()</code> = whole number (10, 25, -3)<br>
+                <code>float()</code> = decimal number (3.14, 5.5, -2.7)<br>
+                <code>str()</code> = text
+            </div>
+        </section>
+
+        <!-- Strings -->
+        <section id="strings">
+            <h2>8. String Basics</h2>
+
+            <p>A <strong>string</strong> is a sequence of characters (letters, numbers, symbols, spaces) enclosed in quotes. Strings are one of the most commonly used data types in Python.</p>
+
+            <h3>Creating Strings</h3>
+            <pre><code>name = "Alice"
+message = 'Hello, World!'
+empty = ""</code></pre>
+
+            <h3>String Indexing</h3>
+            <p>Like lists, strings use indexing starting from 0.</p>
+
+            <pre><code>name = "Python"
+
+print(name[0])   # P
+print(name[1])   # y
+print(name[-1])  # n</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                P<br>
+                y<br>
+                n
+            </div>
+
+            <h3>String Slicing</h3>
+            <p>You can get a part of a string using slicing.</p>
+
+            <pre><code>name = "Python"
+
+print(name[0:4])   # Pyth
+print(name[2:])    # thon
+print(name[:4])    # Pyth
+print(name[::2])   # Pto</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Pyth<br>
+                thon<br>
+                Pyth<br>
+                Pto
+            </div>
+
+            <h3>Common String Methods</h3>
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>What It Does</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>upper()</code></td>
+                    <td>Converts to uppercase</td>
+                    <td><code>"hello".upper()</code> → <code>"HELLO"</code></td>
+                </tr>
+                <tr>
+                    <td><code>lower()</code></td>
+                    <td>Converts to lowercase</td>
+                    <td><code>"HELLO".lower()</code> → <code>"hello"</code></td>
+                </tr>
+                <tr>
+                    <td><code>title()</code></td>
+                    <td>Capitalizes each word</td>
+                    <td><code>"hello world".title()</code> → <code>"Hello World"</code></td>
+                </tr>
+                <tr>
+                    <td><code>strip()</code></td>
+                    <td>Removes extra spaces</td>
+                    <td><code>"  hi  ".strip()</code> → <code>"hi"</code></td>
+                </tr>
+                <tr>
+                    <td><code>replace()</code></td>
+                    <td>Replaces text</td>
+                    <td><code>"hello".replace("h", "j")</code> → <code>"jello"</code></td>
+                </tr>
+                <tr>
+                    <td><code>split()</code></td>
+                    <td>Splits into a list</td>
+                    <td><code>"a,b,c".split(",")</code> → <code>['a','b','c']</code></td>
+                </tr>
+                <tr>
+                    <td><code>len()</code></td>
+                    <td>Returns length</td>
+                    <td><code>len("hello")</code> → <code>5</code></td>
+                </tr>
+            </table>
+
+            <h3>String Concatenation</h3>
+            <p>You can combine strings using the <code>+</code> operator.</p>
+
+            <pre><code>first = "Hello"
+second = "World"
+
+message = first + " " + second
+print(message)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Hello World
+            </div>
+
+            <h3>String Formatting with f-strings</h3>
+            <p>The easiest way to put variables inside strings is using an <strong>f-string</strong>. Put an <code>f</code> before the string and variables inside curly braces <code>{}</code>.</p>
+
+            <pre><code>name = "Alice"
+age = 20
+
+print(f"My name is {name} and I am {age} years old.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                My name is Alice and I am 20 years old.
+            </div>
+
+            <h3>Escape Characters</h3>
+            <p>Sometimes you need special characters inside strings. Use a backslash <code>\</code> before them.</p>
+
+            <table>
+                <tr>
+                    <th>Escape</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td><code>\n</code></td>
+                    <td>New line</td>
+                </tr>
+                <tr>
+                    <td><code>\t</code></td>
+                    <td>Tab space</td>
+                </tr>
+                <tr>
+                    <td><code>\\</code></td>
+                    <td>Backslash</td>
+                </tr>
+                <tr>
+                    <td><code>\"</code></td>
+                    <td>Double quote inside double quotes</td>
+                </tr>
+                <tr>
+                    <td><code>\'</code></td>
+                    <td>Single quote inside single quotes</td>
+                </tr>
+            </table>
+
+            <pre><code>print("Line 1\nLine 2")
+print("He said, \"Hello!\"")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Line 1<br>
+                Line 2<br>
+                He said, "Hello!"
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> Strings in Python are <strong>immutable</strong>. This means once created, you cannot change individual characters. But you can create a new string based on the old one.
+            </div>
+        </section>
+
+        <!-- If Statements -->
+        <section id="if">
+            <h2>9. If Statements</h2>
+
+            <p>An <strong>if statement</strong> is used to make decisions in your program. It checks a condition, and if the condition is true, it runs a block of code.</p>
+
+            <h3>Real-Life Analogy</h3>
+            <p>Imagine you say: "If it is raining, I will take an umbrella." An if statement works the same way.</p>
+
+            <h3>Simple Example</h3>
+            <pre><code>age = 18
+
+if age >= 18:
+    print("You can vote!")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You can vote!
+            </div>
+
+            <h3>How It Works</h3>
+            <ul>
+                <li>The condition is <code>age >= 18</code></li>
+                <li>If this condition is <code>True</code>, the indented code runs.</li>
+                <li>If it is <code>False</code>, the indented code is skipped.</li>
+            </ul>
+
+            <h3>Indentation is Very Important</h3>
+            <p>In Python, indentation (usually 4 spaces) tells the computer which code belongs to the <code>if</code> statement.</p>
+
+            <pre><code>age = 16
+
+if age >= 18:
+    print("You can vote!")  # This line is inside the if block
+print("Have a nice day!")     # This line is outside the if block</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Have a nice day!
+            </div>
+
+            <h3>Common Conditions</h3>
+            <pre><code>x = 10
+
+if x > 0:
+    print("x is positive")
+
+if x == 10:
+    print("x is exactly 10")
+
+if x != 5:
+    print("x is not 5")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                x is positive<br>
+                x is exactly 10<br>
+                x is not 5
+            </div>
+
+            <h3>Multiple Lines Inside an if Block</h3>
+            <pre><code>age = 20
+
+if age >= 18:
+    print("You are an adult.")
+    print("You can drive.")
+    print("You can vote.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You are an adult.<br>
+                You can drive.<br>
+                You can vote.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Common Mistake:</strong> Forgetting to indent the code under an <code>if</code> statement will cause an <code>IndentationError</code>. Always use 4 spaces.
+            </div>
+        </section>
+
+        <!-- If-Else Statements -->
+        <section id="ifelse">
+            <h2>10. If-Else Statements</h2>
+
+            <p>Sometimes you want to do one thing if a condition is true, and a different thing if it is false. That's where <strong>if-else</strong> comes in.</p>
+
+            <h3>Example</h3>
+            <pre><code>age = 16
+
+if age >= 18:
+    print("You can vote!")
+else:
+    print("You cannot vote yet.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You cannot vote yet.
+            </div>
+
+            <h3>How It Works</h3>
+            <ol>
+                <li>Python checks the condition <code>age >= 18</code>.</li>
+                <li>If it is <code>True</code>, the code under <code>if</code> runs.</li>
+                <li>If it is <code>False</code>, the code under <code>else</code> runs.</li>
+                <li>Only one of the two blocks will run. Never both.</li>
+            </ol>
+
+            <h3>Another Example: Even or Odd</h3>
+            <pre><code>number = 7
+
+if number % 2 == 0:
+    print("The number is even.")
+else:
+    print("The number is odd.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                The number is odd.
+            </div>
+
+            <p>Here, <code>%</code> is the <strong>modulo operator</strong>. It gives the remainder after division. If a number divided by 2 has remainder 0, it is even.</p>
+
+            <h3>Another Example: Pass or Fail</h3>
+            <pre><code>marks = 55
+
+if marks >= 40:
+    print("You passed!")
+else:
+    print("You failed. Try again.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You passed!
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">💡 Think of it like this:</div>
+                If-else is like asking a yes/no question. If the answer is yes, do this. Otherwise, do that.
+            </div>
+        </section>
+
+        <!-- Elif Statements -->
+        <section id="elif">
+            <h2>11. Elif Statements</h2>
+
+            <p>What if you have more than two choices? Use <code>elif</code> (short for "else if") to check multiple conditions one by one.</p>
+
+            <h3>Example: Grades</h3>
+            <pre><code>marks = 75
+
+if marks >= 90:
+    print("Grade: A")
+elif marks >= 80:
+    print("Grade: B")
+elif marks >= 70:
+    print("Grade: C")
+elif marks >= 60:
+    print("Grade: D")
+else:
+    print("Grade: F")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Grade: C
+            </div>
+
+            <h3>How It Works</h3>
+            <ol>
+                <li>Python checks the first <code>if</code> condition.</li>
+                <li>If it is false, it checks the first <code>elif</code>.</li>
+                <li>It keeps checking each condition from top to bottom.</li>
+                <li>As soon as one condition is true, that block runs and the rest are skipped.</li>
+                <li>If none of the conditions are true, the <code>else</code> block runs.</li>
+            </ol>
+
+            <h3>Order Matters!</h3>
+            <p>The order of conditions is very important. If you put a less specific condition first, the more specific one may never be checked.</p>
+
+            <pre><code># Wrong order example
+marks = 85
+
+if marks >= 60:
+    print("Grade: D")      # This will run, even though marks are actually B level
+elif marks >= 80:
+    print("Grade: B")
+else:
+    print("Grade: F")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Grade: D
+            </div>
+
+            <p>Because 85 is also >= 60, the first condition catches it. Always put the most specific conditions first.</p>
+
+            <h3>Another Example: Temperature</h3>
+            <pre><code>temperature = 30
+
+if temperature > 35:
+    print("It's very hot!")
+elif temperature > 25:
+    print("It's warm.")
+elif temperature > 15:
+    print("It's cool.")
+else:
+    print("It's cold.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                It's warm.
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> You can have as many <code>elif</code> blocks as you want. But there can only be one <code>if</code> at the start and one <code>else</code> at the end (optional).
+            </div>
+        </section>
+
+        <!-- Nested If Statements -->
+        <section id="nested">
+            <h2>12. Nested If Statements</h2>
+
+            <p>A <strong>nested if</strong> is an if statement inside another if statement. You use it when you need to check one condition, and then check another condition inside it.</p>
+
+            <h3>Example: Driving License</h3>
+            <pre><code>age = 20
+has_learners_permit = True
+
+if age >= 18:
+    if has_learners_permit:
+        print("You can apply for a driving license.")
+    else:
+        print("First, get a learner's permit.")
+else:
+    print("You are too young to drive.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You can apply for a driving license.
+            </div>
+
+            <h3>How It Works</h3>
+            <p>First, the outer <code>if</code> checks if <code>age >= 18</code>. If that is true, then the inner <code>if</code> checks if the person has a learner's permit.</p>
+
+            <h3>Another Example: Login System</h3>
+            <pre><code>username = "admin"
+password = "1234"
+
+if username == "admin":
+    if password == "1234":
+        print("Login successful!")
+    else:
+        print("Wrong password.")
+else:
+    print("Username not found.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Login successful!
+            </div>
+
+            <h3>Nested If with elif</h3>
+            <p>You can also combine nested ifs with elif and else.</p>
+
+            <pre><code>has_membership = True
+purchase_amount = 120
+
+if has_membership:
+    if purchase_amount >= 100:
+        print("You get 20% discount.")
+    elif purchase_amount >= 50:
+        print("You get 10% discount.")
+    else:
+        print("No discount available.")
+else:
+    print("Join membership to get discounts.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                You get 20% discount.
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">💡 Tip:</div>
+                Don't nest too many if statements inside each other, or your code can become confusing. If you need many levels, there is usually a simpler way to write it using logical operators like <code>and</code> and <code>or</code>.
+            </div>
+        </section>
+
+        <!-- Lists -->
+        <section id="lists">
+            <h2>13. Lists</h2>
+
+            <p>A <strong>list</strong> is a collection of items stored in one variable. You can store many values together, like names, numbers, or anything else.</p>
+
+            <h3>Creating a List</h3>
+            <p>A list is created by placing items inside square brackets <code>[]</code>, separated by commas.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+numbers = [10, 20, 30, 40]
+mixed = ["Hello", 25, 3.14, True]</code></pre>
+
+            <p>Lists can contain any type of data, including a mix of different types.</p>
+
+            <h3>Printing a List</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+print(fruits)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana', 'cherry']
+            </div>
+
+            <h3>Empty List</h3>
+            <p>You can also create an empty list and add items to it later.</p>
+
+            <pre><code>my_list = []
+print(my_list)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                []
+            </div>
+
+            <h3>Features of Lists</h3>
+            <ul>
+                <li><strong>Ordered:</strong> Items stay in the order you put them.</li>
+                <li><strong>Changeable (Mutable):</strong> You can add, remove, or modify items.</li>
+                <li><strong>Allow Duplicates:</strong> You can have the same item more than once.</li>
+                <li><strong>Indexed:</strong> Each item has a position number.</li>
+            </ul>
+
+            <h3>List of Lists</h3>
+            <p>A list can contain other lists. This is called a <strong>nested list</strong> or <strong>2D list</strong>.</p>
+
+            <pre><code>matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(matrix[0])
+print(matrix[1][2])</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                [1, 2, 3]<br>
+                6
+            </div>
+
+            <h3>Checking if an Item Exists</h3>
+            <p>You can use the <code>in</code> keyword to check if an item is in a list.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+
+if "banana" in fruits:
+    print("Banana is in the list!")
+
+if "grape" not in fruits:
+    print("Grape is not in the list.")</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Banana is in the list!<br>
+                Grape is not in the list.
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> Lists are one of the most useful features in Python. You will use them a lot!
+            </div>
+        </section>
+
+        <!-- List Indexing -->
+        <section id="indexing">
+            <h2>14. List Indexing</h2>
+
+            <p>Each item in a list has a position called an <strong>index</strong>. You can use the index to access a specific item.</p>
+
+            <h3>Important: Indexing Starts at 0</h3>
+            <p>The first item is at index <code>0</code>, the second item is at index <code>1</code>, and so on.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry", "date"]
+
+print(fruits[0])  # First item
+print(fruits[1])  # Second item
+print(fruits[2])  # Third item
+print(fruits[3])  # Fourth item</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                apple<br>
+                banana<br>
+                cherry<br>
+                date
+            </div>
+
+            <h3>Negative Indexing</h3>
+            <p>You can also use negative numbers to count from the end of the list.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry", "date"]
+
+print(fruits[-1])  # Last item
+print(fruits[-2])  # Second last item
+print(fruits[-3])  # Third last item</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                date<br>
+                cherry<br>
+                banana
+            </div>
+
+            <h3>Visual Index Table</h3>
+            <table>
+                <tr>
+                    <th>List</th>
+                    <th>"apple"</th>
+                    <th>"banana"</th>
+                    <th>"cherry"</th>
+                    <th>"date"</th>
+                </tr>
+                <tr>
+                    <td>Positive Index</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Negative Index</td>
+                    <td>-4</td>
+                    <td>-3</td>
+                    <td>-2</td>
+                    <td>-1</td>
+                </tr>
+            </table>
+
+            <h3>Changing an Item Using Index</h3>
+            <p>You can change the value of an item by using its index.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+fruits[1] = "blueberry"
+
+print(fruits)</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'blueberry', 'cherry']
+            </div>
+
+            <h3>Index Out of Range Error</h3>
+            <p>If you try to access an index that doesn't exist, Python will give you an error.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+
+# This will cause an error:
+# print(fruits[5])  # IndexError: list index out of range</code></pre>
+
+            <div class="tip">
+                <div class="tip-title">💡 Remember:</div>
+                Index <code>0</code> always means the <strong>first</strong> item. This is one of the most common mistakes beginners make!
+            </div>
+        </section>
+
+        <!-- List Slicing -->
+        <section id="slicing">
+            <h2>15. List Slicing</h2>
+
+            <p><strong>Slicing</strong> means taking a part (or slice) of a list. You can get multiple items at once using a range of indexes.</p>
+
+            <h3>Basic Slicing Syntax</h3>
+            <pre><code>list_name[start:end]</code></pre>
+            <p>This gives items from <code>start</code> index up to (but not including) <code>end</code> index.</p>
+
+            <h3>Example</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry", "date", "elderberry"]
+
+print(fruits[1:4])</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['banana', 'cherry', 'date']
+            </div>
+
+            <p>It starts at index 1 ("banana") and goes up to, but does not include, index 4 ("elderberry").</p>
+
+            <h3>Slicing from the Start</h3>
+            <p>If you leave out the start index, slicing begins from the first item.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry", "date", "elderberry"]
+
+print(fruits[:3])</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana', 'cherry']
+            </div>
+
+            <h3>Slicing to the End</h3>
+            <p>If you leave out the end index, slicing goes until the last item.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry", "date", "elderberry"]
+
+print(fruits[2:])</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['cherry', 'date', 'elderberry']
+            </div>
+
+            <h3>Slicing the Entire List</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+
+print(fruits[:])</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana', 'cherry']
+            </div>
+
+            <h3>Slicing with Step</h3>
+            <p>You can also skip items using a third number called the <strong>step</strong>.</p>
+
+            <pre><code>numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+print(numbers[0:10:2])  # Every second item
+print(numbers[::3])       # Every third item</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                [0, 2, 4, 6, 8]<br>
+                [0, 3, 6, 9]
+            </div>
+
+            <h3>Reversing a List</h3>
+            <p>A cool trick: use step -1 to reverse the list.</p>
+
+            <pre><code>numbers = [1, 2, 3, 4, 5]
+
+print(numbers[::-1])</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                [5, 4, 3, 2, 1]
+            </div>
+
+            <h3>Negative Step Slicing</h3>
+            <pre><code>numbers = [0, 1, 2, 3, 4, 5]
+
+print(numbers[5:1:-1])   # Start at 5, go back to index 2</code></pre>
+
+            <div class="output">
+                <div class="output-label">Output:</div>
+                [5, 4, 3, 2]
+            </div>
+
+            <table>
+                <tr>
+                    <th>Syntax</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td><code>[start:end]</code></td>
+                    <td>Items from start to end-1</td>
+                </tr>
+                <tr>
+                    <td><code>[:end]</code></td>
+                    <td>Items from beginning to end-1</td>
+                </tr>
+                <tr>
+                    <td><code>[start:]</code></td>
+                    <td>Items from start to the end</td>
+                </tr>
+                <tr>
+                    <td><code>[:]</code></td>
+                    <td>All items (copy of the list)</td>
+                </tr>
+                <tr>
+                    <td><code>[::step]</code></td>
+                    <td>Every step-th item</td>
+                </tr>
+                <tr>
+                    <td><code>[::-1]</code></td>
+                    <td>Reversed list</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Basic List Methods -->
+        <section id="methods">
+            <h2>16. Basic List Methods</h2>
+
+            <p>A <strong>method</strong> is a special function that belongs to a list. You use it by writing the list name, then a dot <code>.</code>, then the method name.</p>
+
+            <h3>1. append() — Add an Item to the End</h3>
+            <pre><code>fruits = ["apple", "banana"]
+fruits.append("cherry")
+
+print(fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana', 'cherry']
+            </div>
+
+            <h3>2. insert() — Add an Item at a Specific Position</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+fruits.insert(1, "blueberry")
+
+print(fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'blueberry', 'banana', 'cherry']
+            </div>
+
+            <h3>3. extend() — Add Multiple Items</h3>
+            <pre><code>fruits = ["apple", "banana"]
+more_fruits = ["cherry", "date"]
+
+fruits.extend(more_fruits)
+print(fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana', 'cherry', 'date']
+            </div>
+
+            <h3>4. remove() — Remove a Specific Item</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+fruits.remove("banana")
+
+print(fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'cherry']
+            </div>
+
+            <h3>5. pop() — Remove the Last Item or Item at Index</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+last_item = fruits.pop()
+
+print(fruits)
+print("Removed item:", last_item)
+
+# Remove item at index 0
+fruits = ["apple", "banana", "cherry"]
+first_item = fruits.pop(0)
+print(first_item)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana']<br>
+                Removed item: cherry<br>
+                apple
+            </div>
+
+            <h3>6. clear() — Remove All Items</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+fruits.clear()
+
+print(fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                []
+            </div>
+
+            <h3>7. sort() — Sort the List</h3>
+            <pre><code>numbers = [5, 2, 8, 1, 9]
+numbers.sort()
+
+print(numbers)
+
+# Sort strings alphabetically
+fruits = ["banana", "apple", "cherry"]
+fruits.sort()
+print(fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                [1, 2, 5, 8, 9]<br>
+                ['apple', 'banana', 'cherry']
+            </div>
+
+            <h3>8. reverse() — Reverse the List</h3>
+            <pre><code>numbers = [1, 2, 3, 4, 5]
+numbers.reverse()
+
+print(numbers)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                [5, 4, 3, 2, 1]
+            </div>
+
+            <h3>9. count() — Count Occurrences</h3>
+            <pre><code>numbers = [1, 2, 2, 3, 2, 4]
+print(numbers.count(2))</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                3
+            </div>
+
+            <h3>10. index() — Find Position of an Item</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+print(fruits.index("banana"))</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                1
+            </div>
+
+            <h3>11. copy() — Copy a List</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+new_fruits = fruits.copy()
+
+print(new_fruits)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                ['apple', 'banana', 'cherry']
+            </div>
+
+            <h3>12. len() — Get the Length of a List</h3>
+            <p><code>len()</code> is a function, not a method, but it is very useful with lists.</p>
+
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+print(len(fruits))</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                3
+            </div>
+
+            <h3>Quick Reference Table</h3>
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>What It Does</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>append(x)</code></td>
+                    <td>Adds x at the end</td>
+                    <td><code>list.append("x")</code></td>
+                </tr>
+                <tr>
+                    <td><code>insert(i, x)</code></td>
+                    <td>Inserts x at index i</td>
+                    <td><code>list.insert(1, "x")</code></td>
+                </tr>
+                <tr>
+                    <td><code>extend(list)</code></td>
+                    <td>Adds all items from another list</td>
+                    <td><code>list.extend([1, 2])</code></td>
+                </tr>
+                <tr>
+                    <td><code>remove(x)</code></td>
+                    <td>Removes first x</td>
+                    <td><code>list.remove("x")</code></td>
+                </tr>
+                <tr>
+                    <td><code>pop()</code></td>
+                    <td>Removes and returns last item</td>
+                    <td><code>list.pop()</code></td>
+                </tr>
+                <tr>
+                    <td><code>clear()</code></td>
+                    <td>Removes all items</td>
+                    <td><code>list.clear()</code></td>
+                </tr>
+                <tr>
+                    <td><code>sort()</code></td>
+                    <td>Sorts in ascending order</td>
+                    <td><code>list.sort()</code></td>
+                </tr>
+                <tr>
+                    <td><code>reverse()</code></td>
+                    <td>Reverses the list</td>
+                    <td><code>list.reverse()</code></td>
+                </tr>
+                <tr>
+                    <td><code>count(x)</code></td>
+                    <td>Counts how many times x appears</td>
+                    <td><code>list.count(2)</code></td>
+                </tr>
+                <tr>
+                    <td><code>index(x)</code></td>
+                    <td>Returns first index of x</td>
+                    <td><code>list.index("x")</code></td>
+                </tr>
+                <tr>
+                    <td><code>copy()</code></td>
+                    <td>Returns a copy of the list</td>
+                    <td><code>list.copy()</code></td>
+                </tr>
+                <tr>
+                    <td><code>len(list)</code></td>
+                    <td>Returns number of items</td>
+                    <td><code>len(list)</code></td>
+                </tr>
+            </table>
+
+            <div class="tip">
+                <div class="tip-title">💡 Practice Tip:</div>
+                Try writing small programs using these methods. For example, create a to-do list where you can add, remove, and display tasks. This is the best way to learn!
+            </div>
+        </section>
+
+        <!-- Common Beginner Mistakes -->
+        <section id="mistakes">
+            <h2>17. Common Beginner Mistakes</h2>
+
+            <p>Every beginner makes mistakes. Don't worry — it's part of learning. Here are the most common ones and how to avoid them.</p>
+
+            <h3>1. Confusing = and ==</h3>
+            <ul>
+                <li><code>=</code> assigns a value to a variable.</li>
+                <li><code>==</code> compares two values.</li>
+            </ul>
+            <pre><code># Correct
+x = 5
+
+if x == 5:
+    print("x is 5")
+
+# Wrong
+# if x = 5:    # This causes a syntax error!</code></pre>
+
+            <h3>2. Forgetting That Indexing Starts at 0</h3>
+            <pre><code>fruits = ["apple", "banana", "cherry"]
+
+# First item is at index 0, not 1
+print(fruits[0])  # Correct: apple
+# print(fruits[3])  # Error: index out of range</code></pre>
+
+            <h3>3. Forgetting Indentation</h3>
+            <p>Python uses indentation to know which code belongs together.</p>
+            <pre><code># Correct
+if age >= 18:
+    print("You can vote.")
+
+# Wrong
+# if age >= 18:
+# print("You can vote.")  # IndentationError!</code></pre>
+
+            <h3>4. Forgetting input() Returns a String</h3>
+            <pre><code># Wrong
+age = input("Enter age: ")
+# print(age + 5)  # Error: cannot add string and integer
+
+# Correct
+age = int(input("Enter age: "))
+print(age + 5)</code></pre>
+
+            <h3>5. Using the Wrong Quotes</h3>
+            <pre><code># Wrong
+# print('Hello")  # Mixed quotes cause an error
+
+# Correct
+print("Hello")
+print('Hello')</code></pre>
+
+            <h3>6. Misspelling Variable Names</h3>
+            <pre><code>name = "Alice"
+# print(nmae)  # NameError: variable not defined</code></pre>
+
+            <h3>7. Trying to Modify a String Like a List</h3>
+            <p>Strings are immutable. You cannot change a single character directly.</p>
+            <pre><code>word = "Hello"
+# word[0] = "J"  # Error!
+
+# Instead, create a new string
+new_word = "J" + word[1:]
+print(new_word)</code></pre>
+            <div class="output">
+                <div class="output-label">Output:</div>
+                Jello
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">💡 How to Fix Errors:</div>
+                Read the error message carefully. It usually tells you which line has the problem. Search the error message online — someone else has probably had the same problem!
+            </div>
+        </section>
+
+        <!-- Practice Exercises -->
+        <section id="practice">
+            <h2>18. Practice Exercises</h2>
+
+            <p>The best way to learn programming is by practicing. Try these exercises on your own. Don't look at the answers until you have tried yourself!</p>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 1: Simple Calculator</div>
+                <p>Ask the user for two numbers and print their sum, difference, product, and quotient.</p>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 2: Vote Checker</div>
+                <p>Ask the user for their age and tell them whether they can vote or not.</p>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 3: Grade Calculator</div>
+                <p>Ask the user for their marks and print their grade (A, B, C, D, or F).</p>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 4: Even or Odd</div>
+                <p>Ask the user for a number and tell them if it is even or odd.</p>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 5: Login System</div>
+                <p>Ask the user for a username and password. If both are correct, print "Login successful!" Otherwise, print an appropriate error message.</p>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 6: List Manager</div>
+                <p>Create a list of 5 fruits. Then:</p>
+                <ol>
+                    <li>Print the first and last fruit.</li>
+                    <li>Add a new fruit to the end.</li>
+                    <li>Remove the second fruit.</li>
+                    <li>Print the length of the list.</li>
+                    <li>Sort and print the list.</li>
+                </ol>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 7: Reverse Name</div>
+                <p>Ask the user for their name and print it reversed.</p>
+            </div>
+
+            <div class="exercise">
+                <div class="exercise-title">Exercise 8: Temperature Converter</div>
+                <p>Convert Celsius to Fahrenheit using the formula: <code>F = (C × 9/5) + 32</code></p>
+            </div>
+
+            <h3>Sample Solutions</h3>
+
+            <h4>Solution 1: Simple Calculator</h4>
+            <pre><code>a = float(input("Enter first number: "))
+b = float(input("Enter second number: "))
+
+print("Sum:", a + b)
+print("Difference:", a - b)
+print("Product:", a * b)
+print("Quotient:", a / b)</code></pre>
+
+            <h4>Solution 2: Vote Checker</h4>
+            <pre><code>age = int(input("Enter your age: "))
+
+if age >= 18:
+    print("You can vote!")
+else:
+    print("You cannot vote yet.")</code></pre>
+
+            <h4>Solution 4: Even or Odd</h4>
+            <pre><code>number = int(input("Enter a number: "))
+
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")</code></pre>
+
+            <div class="tip">
+                <div class="tip-title">💡 Final Tip:</div>
+                Don't just read — <strong>type the code yourself</strong>. Make mistakes, fix them, and try again. That's how real learning happens. Happy coding! 🚀
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>🐍 Happy Learning Python! 🚀</p>
+        <p>Made with ❤️ by Muhammad Shoaib Tahir for absolute beginners</p>
+        <p>Publish these notes on GitHub Pages and share them with the world!</p>
+    </footer>
+
+</body>
+</html>
